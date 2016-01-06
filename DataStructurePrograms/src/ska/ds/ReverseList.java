@@ -5,7 +5,7 @@ package ska.ds;
 
 /**
  * @author Shubham
- *
+ * Reverse a linked List
  */
 public class ReverseList {
 
