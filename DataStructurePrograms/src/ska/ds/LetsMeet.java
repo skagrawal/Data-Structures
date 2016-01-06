@@ -16,7 +16,6 @@ import java.util.TreeSet;
  * @author sagrawal
  * @email sagrawal@iastate.edu
  * @version 1.0
- * Take input a text file "map.txt" from the project path
  */
 public class LetsMeet {
 
@@ -25,22 +24,24 @@ public class LetsMeet {
 	 */
 	public static void main(String[] args) {
 		BufferedReader bufferedReader;
-		Map<String,Node> nodeMap = new HashMap<String,Node>();
-		Set<Node> avoidSet = new HashSet<Node>();
-		Set<Node> peggyPoints = new HashSet<Node>();
-		Set<Node> samPoints = new HashSet<Node>();
+		Map<String,MainNode> nodeMap = new HashMap<String,MainNode>();
+		Set<MainNode> avoidSet = new HashSet<MainNode>();
+		Set<MainNode> peggyPoints = new HashSet<MainNode>();
+		Set<MainNode> samPoints = new HashSet<MainNode>();
 		Set<String> result1 = new TreeSet<String>();
 		Set<String> result2 = new TreeSet<String>(); 
 		try{	
 			/**
 			 * Taking input from standard input 
 			 */
+			
+			
 			bufferedReader = new BufferedReader(new InputStreamReader(System.in));
 			int type = 0;
 			String pointLine = "";
 			String points[];
 
-			Node node1,node2;
+			MainNode node1,node2;
 			boolean flag = false;
 			/**
 			 * Taking data from standard input for different category
@@ -104,8 +105,8 @@ public class LetsMeet {
 							 * If First Node, add directly
 							 */
 							if(nodeMap.isEmpty()){
-								node1 = new Node(points[0]);
-								node2 = new Node(points[1]);
+								node1 = new MainNode(points[0]);
+								node2 = new MainNode(points[1]);
 								node1.addToNodeSet(node2);
 								node2.setParent(node1);
 
@@ -114,14 +115,14 @@ public class LetsMeet {
 							}
 							else{
 								if(!nodeMap.containsKey(points[0])){
-									node1 = new Node(points[0]);
+									node1 = new MainNode(points[0]);
 									nodeMap.put(points[0], node1);
 								}
 								else{
 									node1 = nodeMap.get(points[0]);
 								}
 								if(!nodeMap.containsKey(points[1])){
-									node2 = new Node(points[1]);
+									node2 = new MainNode(points[1]);
 									nodeMap.put(points[1], node2);
 								}
 								else{
@@ -145,9 +146,9 @@ public class LetsMeet {
 			/**
 			 * Finding path for each starting point of Peggy
 			 */
-			Iterator<Node> peggyIterator = peggyPoints.iterator();
+			Iterator<MainNode> peggyIterator = peggyPoints.iterator();
 			while(peggyIterator.hasNext()){
-				Node n = nodeMap.get(peggyIterator.next().getName());
+				MainNode n = nodeMap.get(peggyIterator.next().getName());
 				if(!avoidSet.contains(n))
 					result1 = pathTraverser(n,avoidSet,result1);
 			}
@@ -165,9 +166,9 @@ public class LetsMeet {
 		 * Getting all the parent of Sam points using Iterator
 		 */
 
-		Iterator<Node> samIterator = samPoints.iterator();
+		Iterator<MainNode> samIterator = samPoints.iterator();
 		while(samIterator.hasNext()){
-			Node n = nodeMap.get(samIterator.next().getName());
+			MainNode n = nodeMap.get(samIterator.next().getName());
 
 			result2 = getAllParent(n,avoidSet,result2);
 			/**
@@ -197,14 +198,14 @@ public class LetsMeet {
 	 * Function for removing avoid points from the Node set 
 	 * @param avoidSet
 	 */	
-	public static void removeAvoidPoint(Set<Node> avoidSet){
+	public static void removeAvoidPoint(Set<MainNode> avoidSet){
 
-		Iterator<Node> nodeIt = avoidSet.iterator();
+		Iterator<MainNode> nodeIt = avoidSet.iterator();
 		try {
 			while(nodeIt.hasNext()){
-				Node removeNode = nodeIt.next();
-				Iterator<Node> it = removeNode.getNodeSet().iterator();
-				Node temp;
+				MainNode removeNode = nodeIt.next();
+				Iterator<MainNode> it = removeNode.getNodeSet().iterator();
+				MainNode temp;
 				while(it.hasNext()){
 					temp = it.next();
 					temp.getParent().remove(removeNode);
@@ -223,9 +224,9 @@ public class LetsMeet {
 	 * @param result2
 	 * @return
 	 */
-	public static Set<String> getAllParent(Node n, Set<Node> avoidSet, Set<String> result2) {
-		Iterator<Node> it;
-		Node temp;
+	public static Set<String> getAllParent(MainNode n, Set<MainNode> avoidSet, Set<String> result2) {
+		Iterator<MainNode> it;
+		MainNode temp;
 		if(n == null)
 			return result2;
 		else{
@@ -249,19 +250,19 @@ public class LetsMeet {
 	 * @param result
 	 * @return
 	 */
-	public static Set<String> pathTraverser(Node v, Set<Node> avoidSet, Set<String> result){
+	public static Set<String> pathTraverser(MainNode v, Set<MainNode> avoidSet, Set<String> result){
 
-		Set<Node> visited = new HashSet<Node>();
-		Queue<Node> queue = new LinkedList<Node>();
+		Set<MainNode> visited = new HashSet<MainNode>();
+		Queue<MainNode> queue = new LinkedList<MainNode>();
 		queue.add(v);
 		visited.add(v);
 		result.add(v.getName());
-		Node n;
+		MainNode n;
 
 		while (!queue.isEmpty()) {
 			n = queue.remove();
 
-			for(Node n1:n.getNodeSet()){
+			for(MainNode n1:n.getNodeSet()){
 
 				if(!avoidSet.contains(n1) && !visited.contains(n1)){
 					queue.add(n1);
@@ -282,16 +283,16 @@ public class LetsMeet {
  * @author sagrawal
  *
  */
-class Node {
+class MainNode {
 	private String name;
-	private Set<Node> parent = new HashSet<Node>();
-	private Set<Node> nodeSet = new HashSet<Node>();
+	private Set<MainNode> parent = new HashSet<MainNode>();
+	private Set<MainNode> nodeSet = new HashSet<MainNode>();
 
 	/**
 	 * Constructor using fields
 	 * @param name
 	 */
-	public Node(String name) {
+	public MainNode(String name) {
 		this.name = name;
 	}
 
@@ -299,7 +300,7 @@ class Node {
 	 * Adding Nodes to Nodeset
 	 * @param node2
 	 */
-	public void addToNodeSet(Node node2) {
+	public void addToNodeSet(MainNode node2) {
 		this.nodeSet.add(node2);
 	}
 
@@ -320,14 +321,14 @@ class Node {
 	/**
 	 * @return the parent
 	 */
-	public Set<Node> getParent() {
+	public Set<MainNode> getParent() {
 		return parent;
 	}
 
 	/**
 	 * @param parent the parent to set
 	 */
-	public void setParent(Node n) {
+	public void setParent(MainNode n) {
 		this.parent.add(n);
 	}
 
@@ -335,7 +336,7 @@ class Node {
 	/**
 	 * @return the nodeSet
 	 */
-	public Set<Node> getNodeSet() {
+	public Set<MainNode> getNodeSet() {
 		return nodeSet;
 	}
 
@@ -346,8 +347,8 @@ class Node {
 
 	@Override
 	public boolean equals(Object obj) {
-		if(obj instanceof Node){
-			Node otherVer = (Node) obj;
+		if(obj instanceof MainNode){
+			MainNode otherVer = (MainNode) obj;
 			return name.equals(otherVer.getName());
 		}else{
 			return false;
