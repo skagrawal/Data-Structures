@@ -3,16 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-
-/**
- * 
- */
-
 /**
  * @author Shubham
- * In Order Traversal iteratively
- * https://leetcode.com/problems/binary-tree-inorder-traversal/
- * Difficulty: Medium
+ * Main file for calling different operation on  Binary Search Tree class 
  */
 public class BSTMain {
 
@@ -25,10 +18,8 @@ public class BSTMain {
 		TreeNode root = bst.getRoot();
 		System.out.println("Max "+ bst.findMaximum(root).value);
 		System.out.println("Min "+ bst.findMinimum(root).value);
-//		bst.inOrderTraversalIterative(root);
-//
-//		bst.preorderTraversalRecursive(root);
-		
+		bst.inOrderTraversalIterative(root);
+		bst.preorderTraversalRecursive(root);
 		bst.postOrderTraversalIterative(root);
 	}
 
