@@ -142,11 +142,13 @@ public class BinarySearchTree {
 					stack.push(curr.right);
 				}
 			} 
+			// we are traversing up in the tree from the left
 			else if (curr.left == priv) {
 				if (curr.right != null){
 					stack.push(curr.right);
 				}
 			} 
+			// we are traversing up in the tree from the right
 			else {
 				System.out.println(curr.value);
 				list.add(curr.value);
