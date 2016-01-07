@@ -5,7 +5,7 @@ package ska.ds;
 
 /**
  * @author Shubham
- *
+ * Merge Sort
  */
 public class MergeSort {
 
