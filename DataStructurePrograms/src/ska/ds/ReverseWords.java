@@ -1,5 +1,9 @@
 package ska.ds;
-
+/**
+ * @author Shubham (tech.shubham@gmail.com)
+ * Given an input string, reverse the string word by word
+ * https://leetcode.com/problems/reverse-words-in-a-string/
+ */
 public class ReverseWords {
 
 	public static void main(String s[]) {
