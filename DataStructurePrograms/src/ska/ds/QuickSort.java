@@ -3,17 +3,15 @@
  */
 package ska.ds;
 
+import java.util.Random;
+
 /**
  * @author Shubham
  *
  */
 public class QuickSort {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		int [] arr = {2,4,5,1,2,3,6,7};
 		int[] sorted = quickSort(arr, 0 , arr.length-1);
@@ -37,7 +35,6 @@ public class QuickSort {
 		int i = start;
 		int j = end;
 		while(i <= j){
-			System.out.println(i+" in "+ j);
 			while(arr[i]< arr[pivot]){
 				i++;
 			}
@@ -52,16 +49,12 @@ public class QuickSort {
 				j--;
 			}
 		}
-		System.out.println("out");
 		// recursively sort two sub parts
 		if (start < j)
 			quickSort(arr, start, j);
 		if (end > i)
 			quickSort(arr, i, end);
-		
+
 		return arr;
-		
 	}
-
-
 }
