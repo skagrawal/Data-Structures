@@ -6,7 +6,7 @@ package ska.ds;
 import java.util.Random;
 
 /**
- * @author Shubham
+ * @author Shubham (tech.shubham@gmail.com)
  *
  */
 public class QuickSort {
