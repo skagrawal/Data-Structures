@@ -1,34 +1,30 @@
 package ska.ds;
 
-public class permutation {
 
+/**
+ * @author Shubham (tech.shubham@gmail.com)
+ * Print all permutation of given string
+ */
+public class Permutation {
 
 	public static void main(String a[]) {
-		System.out.println("Main");
-		//Combinations com = new Combinations("ABC");
-		
-		System.out.println("abc".compareTo("ab"));
-		System.out.println("abc".compareTo("abcd"));
-		System.out.println("abc".compareTo("ac"));
+		permute("ABCDE","");
 	}
-}
+
+	public static void permute(String str,String prefix) {
 
 
-class Combinations {
-	private StringBuilder out = new StringBuilder(); 
-	private final String in;
-	public Combinations( final String str ){ 
-		in = str; 
-		combine();
-	}
-	public void combine() { combine( 0 ); } 
+		int len = str.length();
+		if(len == 0){
+			System.out.print(prefix +" ");
+		}
+		else{	
+			for (int i = 0; i < len; i++) {
+				String s = str.substring(0, i)+ str.substring(i+1, len);
+				permute(s, prefix + str.charAt(i));
+			}
+		}
 
-	private void combine(int start ){
-		for( int i = start; i < in.length(); ++i ){ 
-			out.append( in.charAt(i) ); 
-			System.out.println( out );
-			combine(i + 1); 
-			out.setLength( out.length() - 1 );
-		} 
 	}
+
 }
