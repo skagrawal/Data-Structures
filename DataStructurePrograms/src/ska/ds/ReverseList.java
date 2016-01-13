@@ -4,7 +4,7 @@ package ska.ds;
  */
 
 /**
- * @author Shubham
+ * @author Shubham (tech.shubham@gmail.com)
  * Reverse a linked List
  */
 public class ReverseList {
@@ -13,6 +13,7 @@ public class ReverseList {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
 		int size = 2;
 		Node prev = null;
 		Node start = null;
