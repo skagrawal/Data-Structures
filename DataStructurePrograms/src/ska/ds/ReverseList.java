@@ -5,7 +5,8 @@ package ska.ds;
 
 /**
  * @author Shubham (tech.shubham@gmail.com)
- * Reverse a linked List
+ * Reverse a singly linked List
+ * https://leetcode.com/problems/reverse-linked-list/
  */
 public class ReverseList {
 
@@ -13,7 +14,7 @@ public class ReverseList {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
+
 		int size = 2;
 		Node prev = null;
 		Node start = null;
@@ -29,6 +30,16 @@ public class ReverseList {
 
 		}
 
+		//Recursive reverse list
+		reverseListRec(start);
+		
+		//iterative reverse list
+		reverseListIterative(start, size);
+
+	}
+
+	private static void reverseListIterative(Node start,int size) {
+		
 		Node trav = start;
 		while(trav != null){
 			System.out.println(trav.data);
@@ -64,7 +75,7 @@ public class ReverseList {
 			start = n3;
 			n3.next = n2;
 			n2.next = n1;
-			
+
 		}
 		trav = start;
 		while(trav != null){
@@ -72,9 +83,26 @@ public class ReverseList {
 			trav = trav.next;
 		}
 
+		
 	}
 
+	// Recursive method
+	public static Node reverseListRec(Node head) {
 
+		if(head == null || head.next == null){
+			return head;
+		}
+
+		Node second = head.next;
+		head.next = null;
+		Node rest = reverseListRec(second);
+		second.next = head;
+
+
+		return rest;
+	}
+	
+	//Node class
 	public static class Node{
 		int data;
 		Node next;
