@@ -4,7 +4,7 @@
 package ska.ds;
 
 /**
- * @author Shubham
+ * @author Shubham(tech.shubham@gmail.com)
  * Printing power set of given array
  * Total elements = 2^n
  */
