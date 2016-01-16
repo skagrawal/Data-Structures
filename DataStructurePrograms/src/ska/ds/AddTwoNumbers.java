@@ -25,7 +25,7 @@ public class AddTwoNumbers {
 	}
 
 	private static int add(int x, int y) {
-
+		System.out.print(x+y +" ");
 		int carry = 0;
 		while (y != 0)
 	    {
@@ -35,7 +35,7 @@ public class AddTwoNumbers {
 	        x = x ^ y; 
 	        y = carry << 1;
 	    }
-		System.out.print(x+y +" ");
+		
 		System.out.println(x);
 	    return x;
 	}
