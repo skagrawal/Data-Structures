@@ -18,19 +18,6 @@ public class linkedlistRemoveGreater {
 		int[] arr1 = {1,2,3,24,11,12,13,14};
 		int[] arr2 = {11,12,13,14};
 
-
-		
-		
-		//removeGreater(head);
-		//printList(createList(arr2));
-		//Node node = mergeSorted(createList(arr1), createList(arr2));
-		//printList(node);
-		//printList(deleteAlt(createList(arr1)));
-		//System.out.println(new Random().nextInt(7));
-
-		//solve(44, "A", "B", "C");
-		//System.out.println(makeChange(6, 25));
-		
 		String Demo = "This is a string-th at,we want to tokenize";
 
         StringTokenizer Tok = new StringTokenizer(Demo,"- ,");
