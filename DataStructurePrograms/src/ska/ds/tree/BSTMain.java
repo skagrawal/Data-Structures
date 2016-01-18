@@ -1,4 +1,4 @@
-package ska.ds;
+package ska.ds.tree;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -16,8 +16,8 @@ public class BSTMain {
 		bst.insert(2);
 		bst.insert(3);
 		TreeNode root = bst.getRoot();
-		System.out.println("Max "+ bst.findMaximum(root).value);
-		System.out.println("Min "+ bst.findMinimum(root).value);
+		System.out.println("Max "+ bst.findMaximum(root).val);
+		System.out.println("Min "+ bst.findMinimum(root).val);
 		bst.inOrderTraversalIterative(root);
 		bst.preorderTraversalRecursive(root);
 		bst.postOrderTraversalIterative(root);

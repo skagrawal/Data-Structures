@@ -1,4 +1,4 @@
-package ska.ds;
+package ska.ds.tree;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class BinarySearchTree {
 			return;
 		}
 		inorderTraversalRecursive(root.left);
-		System.out.print(root.value +"  ");
+		System.out.print(root.val +"  ");
 		inorderTraversalRecursive(root.right);
 	}
 
@@ -49,9 +49,10 @@ public class BinarySearchTree {
 		if(root == null){
 			return;
 		}
-		System.out.print(root.value +"  ");
+		System.out.print(root.val +"  ");
 		preorderTraversalRecursive(root.left);
 		preorderTraversalRecursive(root.right);
+		
 	}
 
 	/*
@@ -63,7 +64,7 @@ public class BinarySearchTree {
 		}
 		postorderTraversalRecursive(root.left);
 		postorderTraversalRecursive(root.right);
-		System.out.print(root.value +"  ");
+		System.out.print(root.val +"  ");
 	}
 
 	/*
@@ -83,15 +84,15 @@ public class BinarySearchTree {
 
 		while(!stack.empty()){
 			node = stack.pop();
-			//System.out.print(node.value + "  ");
-			list.add(node.value);
+			System.out.print(node.val + "  ");
+			list.add(node.val);
 			node = node.right;
 			while(node != null){
 				stack.push(node);
 				node = node.left;
 			}
 		}
-		System.out.println("\nEnd");
+		System.out.println("\nEnd of inorder");
 		return list;
 	}
 
@@ -111,19 +112,20 @@ public class BinarySearchTree {
 		while(!stack.isEmpty()){
 			node = stack.pop();
 			// System.out.println(node.val);
-			list.add(node.value);
+			list.add(node.val);
 			if(node.right != null)
 				stack.push(node.right);
 			if(node.left != null)
 				stack.push(node.left);
 		}
-
+		System.out.println("\nEnd of preorder");
 		return list;
 	}
 	/*
 	 * post order Traversal Iterative of a BST
 	 */
 	public List<Integer> postOrderTraversalIterative(TreeNode root) {
+		System.out.println();
 		Stack<TreeNode> stack = new Stack<TreeNode>();
 		List<Integer> list = new LinkedList<Integer>();
 		if (root == null) 
@@ -150,12 +152,13 @@ public class BinarySearchTree {
 			} 
 			// we are traversing up in the tree from the right
 			else {
-				System.out.println(curr.value);
-				list.add(curr.value);
+				System.out.print(curr.val + "  ");
+				list.add(curr.val);
 				stack.pop();
 			}
 			priv = curr;
 		}
+		System.out.println("\nEnd of postorder");
 		return list;
 	}
 
@@ -191,7 +194,7 @@ public class BinarySearchTree {
 	 */
 	private void insertRecc(TreeNode newRoot, TreeNode node) {
 		//if new node value is less than current parent then insert into left else into right
-		if (node.value < newRoot.value) {
+		if (node.val < newRoot.val) {
 			if(newRoot.left == null){
 				newRoot.left = node;
 				return;
@@ -226,12 +229,12 @@ public class BinarySearchTree {
 
 class TreeNode {
 	TreeNode left;
-	int value;
+	int val;
 	TreeNode right;
 
-	TreeNode(TreeNode left, int value, TreeNode right) {
+	TreeNode(TreeNode left, int val, TreeNode right) {
 		this.left = left;
 		this.right = right;
-		this.value = value; 
+		this.val = val; 
 	}
 }
