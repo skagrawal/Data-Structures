@@ -47,6 +47,7 @@ public class BinarySearchTree {
 	 */
 	public void preorderTraversalRecursive(TreeNode root) {
 		if(root == null){
+			
 			return;
 		}
 		System.out.print(root.val +"  ");
@@ -231,6 +232,7 @@ class TreeNode {
 	TreeNode left;
 	int val;
 	TreeNode right;
+	public boolean visited = false;
 
 	TreeNode(TreeNode left, int val, TreeNode right) {
 		this.left = left;
