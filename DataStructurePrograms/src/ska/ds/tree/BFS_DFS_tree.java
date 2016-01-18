@@ -8,8 +8,8 @@ import java.util.Queue;
 import java.util.Stack;
 
 /**
- * @author Shubham
- *
+ * @author Shubham (tech.shubham@gmail.com)
+ * BFS and DFS implementation of a Binary tree
  */
 public class BFS_DFS_tree {
 
