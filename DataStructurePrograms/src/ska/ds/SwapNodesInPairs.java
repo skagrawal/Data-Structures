@@ -97,9 +97,3 @@ public class SwapNodesInPairs {
 
 }
 
-// Class for Node of Linked List
-class ListNode {
-	int val;
-	ListNode next;
-	ListNode(int x) { val = x; }
-}

@@ -21,7 +21,7 @@ public class BinarySearchTree {
 	 * Check for root and call insertRecc()
 	 */
 	public BinarySearchTree insert(int value){
-		TreeNode node = new TreeNode(null, value, null);
+		TreeNode node = new TreeNode(value);
 		if(root == null){
 			root = node;
 			return this;
@@ -234,9 +234,9 @@ class TreeNode {
 	TreeNode right;
 	public boolean visited = false;
 
-	TreeNode(TreeNode left, int val, TreeNode right) {
-		this.left = left;
-		this.right = right;
+	TreeNode( int val) {
+		this.left = null;
+		this.right = null;
 		this.val = val; 
 	}
 }
