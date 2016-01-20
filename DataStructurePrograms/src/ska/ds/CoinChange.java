@@ -17,7 +17,7 @@ public class CoinChange {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		//Available coins
-		int [] coins = {1,2,3,10};
+		int [] coins = {1,2,3,5,10};
 		
 		System.out.println("Amount = 5 will use " + findMinCoins(coins, 5) + " coins");
 		System.out.println("Amount = 9 will use " + findMinCoins(coins, 9) + " coins");
