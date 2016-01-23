@@ -1,6 +1,5 @@
 package citrix;
 
-import java.util.Scanner;
 
 import java.util.Arrays;
 import java.util.Comparator;
