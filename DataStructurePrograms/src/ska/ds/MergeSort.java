@@ -36,7 +36,7 @@ public class MergeSort {
 		System.arraycopy(arr, mid, second, 0, second.length);
 		mergeSort(first);
 		mergeSort(second);
-		merge(first,second,arr);
+		arr = merge(first,second,arr);
 
 		return arr;
 
