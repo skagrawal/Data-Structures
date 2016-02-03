@@ -12,6 +12,7 @@ public class ValidAnagram {
 
 	public static void main(String[] args) {
 
+		
 		boolean res = isAnagram("APPLE", "ALEPP");
 		System.out.println(res);
 	}
