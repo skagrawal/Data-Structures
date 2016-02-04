@@ -1,6 +1,9 @@
 package ska.ds;
 
-//Class for Node of Linked List
+/**
+ * @author Shubham (tech.shubham@gmail.com)
+ * Class for Node of Linked List
+ */
 public class ListNode {
 	
 	public int val;

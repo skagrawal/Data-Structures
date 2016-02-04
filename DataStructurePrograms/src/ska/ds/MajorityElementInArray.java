@@ -23,7 +23,7 @@ public class MajorityElementInArray {
 	public static int majorityElement(int[] nums) {
 
 		HashMap<Integer,Integer> map = new HashMap<Integer,Integer>();
-
+		
 		int len = nums.length;
 		if(len == 1){
 			return nums[0];
