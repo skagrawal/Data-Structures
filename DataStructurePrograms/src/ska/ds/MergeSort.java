@@ -4,8 +4,8 @@
 package ska.ds;
 
 /**
- * @author Shubham
- * Merge Sort
+ * @author Shubham (tech.shubham@gmail.com)
+ * Merge Sort implementation
  */
 public class MergeSort {
 
