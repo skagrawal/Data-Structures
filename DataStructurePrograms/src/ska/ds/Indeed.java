@@ -1,4 +1,4 @@
-package fbhackercup.qualification;
+package ska.ds;
 
 import java.util.HashMap;
 import java.util.Map;
