@@ -19,6 +19,8 @@ public class Problem1 {
 	 */
 	public static void main(String[] args) {
 
+		
+		
 		ArrayList<String> readFile = readFile("input.txt");
 		long [] set = null;
 		int index = 0;
