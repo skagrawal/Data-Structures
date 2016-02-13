@@ -11,18 +11,14 @@ import java.util.Set;
 
 /**
  * @author Shubham (tech.shubham@gmail.com)
- *
+ * This gives all set of three elements whose sum is k
  */
 public class ThreeSum {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int [] nums = {1,2,3,-4,6,0,-6};
-		
-		List<List<Integer>> threeSum = threeSum(nums);
+		int [] nums = {0,1,2,3,-4,6,0,-6,-1};
+		int k = 5;
+		List<List<Integer>> threeSum = threeSum(nums,k);
 		for(List<Integer> list : threeSum){
 			System.out.println(list);
 		}
@@ -30,7 +26,7 @@ public class ThreeSum {
 
 	}
 
-	public static List<List<Integer>> threeSum(int[] nums) {
+	public static List<List<Integer>> threeSum(int[] nums,int k) {
 
 		Arrays.sort(nums);
 		Set<List<Integer>> lists = new HashSet<List<Integer>>();
@@ -45,7 +41,7 @@ public class ThreeSum {
 			a = nums[i];
 			while(low < high){       
 				sum = a +nums[low]+nums[high];       
-				if(sum == 0) {
+				if(sum == k) {
 					list.add(a);
 					list.add(nums[low]);
 					list.add(nums[high]);
@@ -61,7 +57,6 @@ public class ThreeSum {
 				}
 			}
 		}
-		//System.out.println(lists.size());
 		List<List<Integer>> set = new LinkedList<List<Integer>>();
 		set.addAll(lists);
 		return set;
