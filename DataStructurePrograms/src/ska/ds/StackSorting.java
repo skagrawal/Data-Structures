@@ -26,7 +26,6 @@ public class StackSorting {
 		}
 		System.out.println("\nAfter sorting");
 		//Sorting here
-		
 		stack = sort(stack);
 		
 		while(!stack.isEmpty()){
