@@ -13,15 +13,10 @@ import java.util.HashMap;
  */
 public class IsomorphicStrings {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-
 		System.out.println(isIsomorphic("dfdgd", "sdffdsf"));
 		System.out.println(isIsomorphic("DSS", "ABB"));
 	}
-
 
 	public static boolean isIsomorphic(String s, String t) {
 
