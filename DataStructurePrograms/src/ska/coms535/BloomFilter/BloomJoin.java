@@ -4,6 +4,8 @@
 package ska.coms535.BloomFilter;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * @author Shubham
@@ -17,7 +19,8 @@ public class BloomJoin {
 		HashMap<String,Integer> map = new HashMap<String,Integer>();
 		map.put("de", 2);
 		map.put("3de", 2);
-		
+Queue<String> q = new LinkedList<String>();
+q.re
 		System.out.println(map.size());
 	}
 

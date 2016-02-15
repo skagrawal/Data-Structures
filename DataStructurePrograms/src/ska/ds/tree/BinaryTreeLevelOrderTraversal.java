@@ -6,6 +6,7 @@ package ska.ds.tree;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * @author Shubham (tech.shubham@gmail.com)
@@ -16,9 +17,10 @@ public class BinaryTreeLevelOrderTraversal {
 
 	public static void main(String[] args) {
 
+		Random rand = new Random();
 		BinarySearchTree bst = new BinarySearchTree();
 		for (int i = 0; i < 10; i++) {
-			bst.insert(i);
+			bst.insert(rand.nextInt(100));
 		}
 		TreeNode root = bst.getRoot();
 		
