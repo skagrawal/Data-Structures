@@ -10,12 +10,7 @@ package ska.ds.tree;
  */
 public class LowestCommonAncestorBST {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
-
-
 		BinarySearchTree bst = new BinarySearchTree();
 		for (int i = 0; i < 10; i++) {
 			bst.insert(i);
