@@ -14,6 +14,7 @@ public class MergeTwoSortedLists {
 
 	public static void main(String[] args) {
 		ListNode l1 = null,l2 = null; 
+		
 		mergeTwoLists(l1, l2);
 		
 	}
