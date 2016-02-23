@@ -88,7 +88,7 @@ public class BloomFilterRan {
 			case 0 : 
 				retArr[i] =  jenkinsHashFn(temp);
 			case 1:
-				retArr[i] =  jenkinsHashFn(temp);
+				retArr[i] =  hash32(temp);
 			default:
 				retArr[i] =  hash32(temp);
 			}
