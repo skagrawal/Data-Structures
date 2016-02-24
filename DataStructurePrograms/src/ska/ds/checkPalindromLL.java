@@ -5,7 +5,7 @@ public class checkPalindromLL {
 	
 	static NodeLL left;
 	public static void main(String[] args) {
-		int[] arr1 = {1,1,2,2,1};
+		int[] arr1 = {1,2,2,1};
 		
 		NodeLL head = createList(arr1);
 		left = head;
@@ -50,13 +50,13 @@ public class checkPalindromLL {
 		next = curr.next;
 		head.next = null;
 		while(next != null){
+			next = next.next;
 			curr.next = priv;
 			priv = curr;
 			curr = next;
-			next = next.next;
 		}
-		curr.next = priv;
-		return curr;
+		
+		return priv;
 	}
 
 
