@@ -17,7 +17,12 @@ public class Add2BinaryNumbers {
 
 	}
 
-
+	/**
+	 * Add to binary numbers
+	 * @param a
+	 * @param b
+	 * @return
+	 */
 	static String addBinary(String a, String b) {
 
 		int lenA = a.length();

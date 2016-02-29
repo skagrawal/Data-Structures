@@ -24,7 +24,12 @@ public class AddTwoNumAsLinkedList {
 		
 	}
 
-	
+	/**
+	 * Add the two numbers and return it as a linked list.
+	 * @param l1
+	 * @param l2
+	 * @return
+	 */
 	 public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 	        if(l1 == null){
 	            return l2;
