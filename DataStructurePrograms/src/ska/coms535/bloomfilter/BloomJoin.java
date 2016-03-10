@@ -1,7 +1,7 @@
 /**
  * 
  */
-package ska.coms535;
+package ska.coms535.bloomfilter;
 
 import java.util.HashMap;
 import java.util.LinkedList;
