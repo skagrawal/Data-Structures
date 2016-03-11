@@ -5,13 +5,15 @@ package ska.coms535.minhash;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
- * @author Shubham and Swati
- *
+ * @author Shubham Agrawal And Swatie Bansal
  */
 public class MinHash {
 
@@ -21,6 +23,7 @@ public class MinHash {
 	private String[] wordSet;
 	private int[][] terms;
 	private int[] RandA, RandB;
+	ArrayList<String> textSet = new ArrayList<String>();
 	/**
 	 * 
 	 * @param folder
@@ -30,31 +33,60 @@ public class MinHash {
 
 		this.folder = folder;
 		this.numPermutations = numPermutations;
-
 		this.fileList = allDocs();
-		BufferedReader br;
+
 		ArrayList<String> text = new ArrayList<String>();
-		for(String file:fileList){
+		Scanner fileScanner = null;
+		for(int i=0; i< fileList.length;i++){
 			try {
-				br = new BufferedReader(new FileReader(folder+"/"+file));
-				String line = br.readLine().toLowerCase();
-				while (line != null) {
-					if(!text.contains(line)){
-						text.add(line);
-					}
-					line = br.readLine();
-				}
-				br.close();
+				fileScanner = new Scanner(new File(folder+"/"+fileList[i]));
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();  
 			}
-			catch(Exception e){
-				e.printStackTrace();
+			while (fileScanner.hasNextLine()) {
+				Scanner lineScanner = new Scanner(fileScanner.nextLine());
+				while (lineScanner.hasNext()) {
+					String s = lineScanner.next().toLowerCase();
+					s = s.replaceAll("\\p{Punct}+","");
+					s = s.replaceAll("\\s+", " ");
+					if(s.length() >= 3 && !s.equalsIgnoreCase("the")){
+						if(!text.contains(s)){
+							text.add(s);
+							textSet.add(s);
+						}
+					}
+				}
+				lineScanner.close();
 			}
 		}
+
 		wordSet = text.toArray(new String[text.size()]);
+		System.out.println("Size of word set = "+ wordSet.length + " and Size of text set = "+ textSet.size());
+		//wordSet = removeStopWords(wordSet);
+		//		System.out.println("\n\n\nAfter stop word removal");
+
 		setTerms();
 		setPrimeNumber();
 		Randomize();
 	}
+
+//	private String[] removeStopWords(String[] ws) {
+//		System.out.print("Original word set of size = "+ ws.length + " reduced to size = ");
+//
+//		int i = 0;
+//		String s = null;
+//		int j = 0;
+//		for(;i<ws.length;i++){
+//			s = ws[i];
+//			if(s.length() >= 3 && !s.equalsIgnoreCase("the")){
+//				ws[j++] = s;
+//			}
+//		}
+//		String[] ret = new String[j];
+//		System.arraycopy(ws, 0, ret, 0, j);
+//		System.out.println(ret.length + " after stop words removal.");
+//		return ret;
+//	}
 
 	public String[] allDocs(){
 		File file = new File(folder);   
@@ -143,7 +175,7 @@ public class MinHash {
 		int[] HS1 = minHashSig(file1);
 		int[] HS2 = minHashSig(file2);
 		int count = 0;
-		
+
 		for(int i=0; i<numPermutations; i++){
 			if(HS1[i] == HS2[i]){
 				count++;
@@ -163,12 +195,10 @@ public class MinHash {
 			}
 		}
 		return mat;
-
 	}
 
 	public int numberOfTerms(){
 		return wordSet.length;
-
 	}
 
 	public int numPermutations(){
@@ -176,32 +206,24 @@ public class MinHash {
 	}
 
 	private void setTerms(){
+		System.out.println("In set terms");
+		long t1 = System.currentTimeMillis();
 		System.out.println(fileList.length+" "+ wordSet.length);
 		terms = new int[fileList.length][wordSet.length];
-		BufferedReader br;
-		ArrayList<String> text = new ArrayList<String>();
+//		BufferedReader br;
+//		ArrayList<String> text = new ArrayList<String>();
 		for(int i=0; i<fileList.length; i++){
-			try {
-				br = new BufferedReader(new FileReader(folder+"/"+fileList[i]));
-				String line = br.readLine().toLowerCase();
-				while (line != null) {
-					text.add(line);
-					line = br.readLine();
+			for(int j=0; j<wordSet.length; j++){
+				if(textSet.contains(wordSet[j])){
+					terms[i][j] = 1;
+				}else{
+					terms[i][j] = 0;
 				}
-				for(int j=0; j<wordSet.length; j++){
-					if(text.contains(wordSet[j])){
-						terms[i][j] = 1;
-					}else{
-						terms[i][j] = 0;
-					}
-				}
-				br.close();
 			}
-			catch(Exception e){
-				e.printStackTrace();
-			}
-
 		}
+		
+		long t2 = System.currentTimeMillis();
+		System.out.println("Time in set terms:" + (t2-t1)+ " ms");
 	}
 
 	private void Randomize(){
@@ -228,8 +250,8 @@ public class MinHash {
 			}
 		}
 	}
-	
-	
+
+
 	private boolean isPrimeNumber(int num){
 		if(num < 2){
 			return false;

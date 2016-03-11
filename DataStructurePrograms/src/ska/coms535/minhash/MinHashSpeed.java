@@ -6,25 +6,21 @@ package ska.coms535.minhash;
 import java.util.Scanner;
 
 /**
- * @author Shubham and Swati 
- *
+ * @author Shubham Agrawal And Swatie Bansal 
  */
 public class MinHashSpeed {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String folder;
-		int numPermutations;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter Folder directory - ");
-		folder = sc.nextLine();
-		System.out.println("Enter Number of permutations - ");
-		numPermutations = sc.nextInt();
-		sc.close();
+		String folder = "/Users/Shubham/Documents/space";
+		int numPermutations = 400;
+//		Scanner sc = new Scanner(System.in);
+//		System.out.println("Enter Folder directory - ");
+//		folder = sc.nextLine();
+//		System.out.println("Enter Number of permutations - ");
+//		numPermutations = sc.nextInt();
+//		sc.close();
 		MinHash min = new MinHash(folder,numPermutations);
 		String[] list= min.allDocs();
 		
@@ -50,11 +46,8 @@ public class MinHashSpeed {
 			}
 		}
 		long t4 = System.currentTimeMillis();
-		
-		
 		System.out.println("Time [Exact Jaccard Similarities]: " + (t2-t1)+ " ms");
 		System.out.println("Time [Estimated Jaccard Similarities]: " + (t4-t3)+ " ms");
-		
 	}
 
 }
