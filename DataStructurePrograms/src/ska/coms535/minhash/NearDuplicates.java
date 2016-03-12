@@ -20,40 +20,40 @@ public class NearDuplicates {
 		int numPermutations = 100;
 		int numBands = 20;
 		double simThreshold = .9;
-		
-		
-//		Scanner sc = new Scanner(System.in);
-//		System.out.println("Name of the folder containing documents - ");
-//		dirName = sc.nextLine();
-//		System.out.println("Number of Permutations to be used for MinHash - ");
-//		k = sc.nextInt();
-//		System.out.println("Number of Bands to be used in locality sensitive hashing - ");
-//		b = sc.nextInt();
-//		System.out.println("Similarity threshold s - ");
-//		s = sc.nextDouble();
-//		System.out.println("Name of a document from the collection, docName. - ");
-//		docName = sc.nextLine();
-//		sc.close();
-//		
-		
+
+		//Console input
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Name of the folder containing documents - ");
+		dirName = sc.nextLine();
+		System.out.println("Number of Permutations to be used for MinHash - ");
+		numPermutations = sc.nextInt();
+		System.out.println("Number of Bands to be used in locality sensitive hashing - ");
+		numBands = sc.nextInt();
+		System.out.println("Similarity threshold s - ");
+		simThreshold = sc.nextDouble();
+		System.out.println("Name of a document from the collection, docName. - ");
+		docName = sc.nextLine();
+		sc.close();
+
+
 		MinHash objMinHash = new MinHash(dirName, numPermutations);
 		int[][] minHashMat = objMinHash.minHashMatrix();
 		LSH objLSH = new LSH(minHashMat, objMinHash.allDocs(), numBands);
 		List<String> listNearDuplicates = objLSH.nearDuplciatesOf(docName);
-		
+
 		List<String> result = new ArrayList<String>();
 		for(String str : listNearDuplicates){
 			if (objMinHash.approximateJaccard(str, docName) >= simThreshold){
 				result.add(str);
 			}
 		}
-		
-		System.out.println("These documents are similar to : " + docName);
+
+		System.out.println("Following documents are similar to : " + docName);
 		for(String s1 : result){
 			System.out.println(s1);
 		}
-		
-		System.out.println("Number of False positive: "+ (listNearDuplicates.size()-result.size()));
+
+		System.out.println("Number of False positive: "+ (listNearDuplicates.size() - result.size()));
 	}
-	
+
 }
