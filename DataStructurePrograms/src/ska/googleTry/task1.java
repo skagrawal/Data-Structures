@@ -1,4 +1,4 @@
-package googleTry;
+package ska.googleTry;
 
 import java.util.Random;
 

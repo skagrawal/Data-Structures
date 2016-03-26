@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fbhackercup.qualification;
+package ska.fbhackercup.qualification;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

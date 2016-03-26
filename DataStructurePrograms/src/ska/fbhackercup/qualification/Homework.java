@@ -1,7 +1,7 @@
 /**
  * 
  */
-package fbhackercup.qualification;
+package ska.fbhackercup.qualification;
 
 import java.util.ArrayList;
 
