@@ -17,7 +17,7 @@ public class MinHashAccuracy {
 	 */
 	public static void main(String[] args){
 
-		String folder = "/Users/Shubham/Documents/space";;
+		String folder = "/Users/Shubham/Documents/space";
 		double error = 0.02;
 		int numPermutations = 600;
 
@@ -29,13 +29,14 @@ public class MinHashAccuracy {
 		System.out.println("Input error parameter: ");
 		error = sc.nextDouble();
 
+		
 
 		MinHash minHash = new MinHash(folder,numPermutations);
 		String[] list= minHash.allDocs();
 		ArrayList<Double> exactJaccardSim = new ArrayList<Double>();
 		int count = 0;
 		
-		minHash.recordAllMinSigs(list);
+//		minHash.recordAllMinSigs(list);
 		System.out.println("calculated");
 		for(int i=0; i<list.length-1; i++){
 			for(int j=i+1; j<list.length; j++){

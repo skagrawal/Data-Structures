@@ -29,6 +29,7 @@ public class LSH {
 		System.out.println(len+" " +minHashMatrix[0].length );
 		int r = (int) len/bands;
 		for (int index= 0; index < len; index++){
+			
 			for(int b = 0; b < bands; b++){
 				hash = 0;
 				for(int i = 0; i < r ; i++){

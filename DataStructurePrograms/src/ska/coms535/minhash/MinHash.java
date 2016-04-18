@@ -83,6 +83,7 @@ public class MinHash {
 		// setTerms();
 		setPrimeNumber();
 		Randomize();
+		this.recordAllMinSigs(fileList);
 	}
 
 	private HashMap<String, Set<Integer>> generateHasMap(String[] dir) {
@@ -91,6 +92,7 @@ public class MinHash {
 		Scanner fileScanner = null;
 		for (int i = 0; i < fileList.length; i++) {
 			try {
+				//System.out.println(new File(folder + "/" + fileList[i]));
 				fileScanner = new Scanner(new File(folder + "/" + fileList[i]));
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
@@ -224,6 +226,7 @@ public class MinHash {
 	}
 
 	public void recordAllMinSigs(String[] list) {
+		// System.out.println("recordAllMinSigs");
 		minSigRecords = new HashMap<String, int[]>();
 		for (int i = 0; i < list.length; i++) {
 			minSigRecords.put(list[i], this.minHashSig(list[i]));
@@ -231,6 +234,7 @@ public class MinHash {
 	}
 
 	public int[] getMinSigOf(String fileName) {
+		// System.out.println("minSigRecords");
 		if (!minSigRecords.containsKey(fileName)) {
 			System.out.println("I have not found:" + fileName);
 		}
